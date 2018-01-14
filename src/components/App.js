@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
 import '../App.css';
-import { Button } from 'reactstrap';
+import AddRepoForm from './AddRepoForm'
 
 class App extends Component {
   render() {
     return (
       <div>
-        <button className="btn btn-success">Test Bootstrap</button>
+        <AddRepoForm />
       </div>
     );
   }
