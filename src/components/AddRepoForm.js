@@ -6,7 +6,7 @@ class AddRepoForm extends Component {
   render() {
     return (
       <div>
-        <form>
+        <form style={{marginBottom: '10px'}}>
           <div className="form-row">
             <div className="col-2">
               <input type="text" className="form-control" placeholder="repository name" />
