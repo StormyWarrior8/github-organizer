@@ -3,13 +3,15 @@ import RepoCategory from './RepoCategory'
 
 class RepoCategoryList extends Component {
   handleList() {
-
-    var categories = this.props.cards.map(e => e.category);
+    var cards = this.props.cards;
+    var categories = cards.map(e => e.category);
     var uniqueCategories = categories.filter((value, index, self) => self.indexOf(value) === index)
 
-    return uniqueCategories.map((category, index) =>
-        <RepoCategory key={index} categoryName={category} cards={this.props.cards}/>
-    )
+    return uniqueCategories.map((category, index) => {
+      var filteredByCategory = cards.filter(e => e.category == category)
+      console.log(filteredByCategory);
+      return <RepoCategory key={index} categoryName={category} cards={filteredByCategory}/>
+    })
   }
   render() {
     return (
