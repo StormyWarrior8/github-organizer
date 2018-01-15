@@ -6,29 +6,31 @@ class AddRepoForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      categoryName: '',
-      repoName: ''
+      category: '',
+      repo: ''
     }
     this.handleRepoNameOnChange = this.handleRepoNameOnChange.bind(this)
     this.handleCategoryOnChange = this.handleCategoryOnChange.bind(this)
     this.handleOnSubmit = this.handleOnSubmit.bind(this)
   }
-
   handleOnSubmit(e) {
     e.preventDefault();
+
     var card = {
-      categoryName: this.state.categoryName,
-      repoName: this.state.repoName
+      repos: this.state.repo,
+      category: this.state.category
     }
     this.props.onSubmit(card)
   }
+
+
   handleRepoNameOnChange(e) {
-    var repoName = e.target.value;
-    this.setState({repoName: repoName})
+    var repo = e.target.value;
+    this.setState({repo: repo})
   }
   handleCategoryOnChange(e) {
-    var categoryName = e.target.value;
-    this.setState({categoryName: categoryName})
+    var category = e.target.value;
+    this.setState({category: category})
   }
 
   render() {
