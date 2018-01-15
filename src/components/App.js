@@ -10,25 +10,15 @@ class App extends Component {
     this.state = {
       cards: [
         {
-          repos: [
-            {
-              repoName: 'Repo 1 - category mobile'
-            },
-            {
-              repoName: 'Repo 2 - category mobile'
-            }
-          ],
+          repos: 'repo1',
           category: 'swift'
         },
         {
-          repos: [
-            {
-              repoName: 'Repo 1 - category mobile'
-            },
-            {
-              repoName: 'Repo 2 - category mobile'
-            }
-          ],
+          repos: 'repo2',
+          category: 'react'
+        },
+        {
+          repos: 'repo3',
           category: 'react'
         }
       ]
@@ -36,23 +26,23 @@ class App extends Component {
     this.addCard = this.addCard.bind(this)
   }
 
+
+  onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
+  }
   addCard(card) {
     // this.setState(prev=>({
     //   cards: prev.cards.concat(card)
     // }))
 
     //check if the array of categories contain the new category entered by the user
-    var filteredArray = this.state.cards.filter(e => e.category == card.category.toLowerCase())
-    //if true, category exists, else category doesn't exist
-    var doesCategoryExist = filteredArray.length ? true : false
-    if (!doesCategoryExist) {
-      console.log("we are creating a new category....");
-    }
-    else {
-      console.log("category exists, we are appending the repo to the existing category...");
-    }
+    //var filteredArray = this.state.cards.filter(onlyUnique)
 
-    console.log(card.category);
+    var categories = this.state.cards.map(e => e.category);
+    var uniqueCategories = categories.filter((value, index, self) => self.indexOf(value) === index)
+
+    console.log(uniqueCategories);
+
   }
 
 
@@ -60,7 +50,7 @@ class App extends Component {
     return (
       <div style={{margin: '10px'}}>
         <AddRepoForm onSubmit={this.addCard} />
-        <RepoCategoryList cards={this.state.cards} />
+        <RepoCategoryList cards={this.state.cards}/>
       </div>
     );
   }
