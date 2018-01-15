@@ -11,6 +11,7 @@ const Repository = () => (
 
 class RepoCategory extends Component {
   render() {
+    console.log(this.props);
     return (
       <div className="col-4" style={{marginBottom: '10px'}}>
         <div className="card" style={{width: '18rem'}}>

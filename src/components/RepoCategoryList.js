@@ -9,13 +9,19 @@ class RepoCategoryList extends Component {
     var uniqueCategories = categories.filter((value, index, self) => self.indexOf(value) === index)
 
 
-    return uniqueCategories.map((c,i) =>
-        <RepoCategory key={i} {...c} />
-      )
+    // var result;
+    // for (var i = 0; i < uniqueCategories.length; i++) {
+    //   result = <RepoCategory key={i} categoryName={uniqueCategories[i]} />
+    // }
+    //
+    //
+    //
+    // return result
 
-    // return this.props.cards.map((card, i) =>
-    //     <RepoCategory key={i} {...card} />
-    //   )
+    return uniqueCategories.map((category, index) =>
+        <RepoCategory key={index} categoryName={category} />
+    )
+
   }
   render() {
     return (
