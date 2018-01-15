@@ -6,10 +6,8 @@ class AddRepoForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      card: {
-        categoryName: '',
-        repoName: ''
-      }
+      categoryName: '',
+      repoName: ''
     }
     this.handleRepoNameOnChange = this.handleRepoNameOnChange.bind(this)
     this.handleCategoryOnChange = this.handleCategoryOnChange.bind(this)
@@ -22,9 +20,8 @@ class AddRepoForm extends Component {
       categoryName: this.state.categoryName,
       repoName: this.state.repoName
     }
-    console.log(card);
+    this.props.onSubmit(card)
   }
-
   handleRepoNameOnChange(e) {
     var repoName = e.target.value;
     this.setState({repoName: repoName})

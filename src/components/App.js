@@ -9,21 +9,25 @@ class App extends Component {
     super(props);
     this.state = {
       cards: [
-        {
-          repoName: 'My Repo',
-          categoryName: 'Mobile'
-        },
-        {
-          repoName: 'My Repo 2',
-          categoryName: 'React'
-        }
+        // {
+        //   repoName: 'My Repo',
+        //   categoryName: 'Mobile'
+        // },
+        // {
+        //   repoName: 'My Repo 2',
+        //   categoryName: 'React'
+        // }
       ]
     }
+    this.addCard = this.addCard.bind(this)
   }
 
   addCard(card) {
-    console.log("hi....");
+    console.log("this is card info!");
     console.log(card);
+    this.setState(prev=>({
+      cards: prev.cards.concat(card)
+    }))
   }
 
 

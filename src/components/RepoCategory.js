@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 
+
 class RepoCategory extends Component {
   render() {
     return (
-      <div style={{marginBottom: '10px'}}>
+      <div className="col-2" style={{marginBottom: '10px'}}>
         <div className="card" style={{width: '18rem'}}>
           <img className="card-img-top" src="http://via.placeholder.com/150x150" alt="Card image cap" />
           <div className="card-body">
