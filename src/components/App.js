@@ -31,17 +31,17 @@ class App extends Component {
     return self.indexOf(value) === index;
   }
   addCard(card) {
-    // this.setState(prev=>({
-    //   cards: prev.cards.concat(card)
-    // }))
+    this.setState(prev=>({
+      cards: prev.cards.concat(card)
+    }))
 
-    //check if the array of categories contain the new category entered by the user
-    //var filteredArray = this.state.cards.filter(onlyUnique)
-
-    var categories = this.state.cards.map(e => e.category);
-    var uniqueCategories = categories.filter((value, index, self) => self.indexOf(value) === index)
-
-    console.log(uniqueCategories);
+    // //check if the array of categories contain the new category entered by the user
+    // //var filteredArray = this.state.cards.filter(onlyUnique)
+    //
+    // var categories = this.state.cards.map(e => e.category);
+    // var uniqueCategories = categories.filter((value, index, self) => self.indexOf(value) === index)
+    //
+    // console.log(uniqueCategories);
 
   }
 

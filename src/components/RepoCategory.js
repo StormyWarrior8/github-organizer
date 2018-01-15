@@ -1,17 +1,38 @@
 import React, { Component } from 'react'
 
 
-const Repository = () => (
-  <ul className="list-group list-group-flush">
-    <li className="list-group-item">My Repo 1</li>
-    <li className="list-group-item">My Repo 2</li>
-    <li className="list-group-item">My Repo 3</li>
-  </ul>
-)
+
+
+
+class Repository extends Component {
+  render() {
+    return (
+      <div>
+          <li className="list-group-item">{this.props.repos}</li>
+      </div>
+    )
+  }
+}
+
 
 class RepoCategory extends Component {
+
+  handleListOfRepos() {
+    var cards = this.props.cards
+    var categoryName = this.props.categoryName
+    var filteredByCategory = cards.filter(e => e.category == categoryName)
+    return filteredByCategory
+  }
+
+  getRepos() {
+    var repos = this.handleListOfRepos();
+    return repos.map((repo,i) =>
+      <Repository key={i} {...repo}/>
+    )
+  }
+
+
   render() {
-    console.log(this.props);
     return (
       <div className="col-4" style={{marginBottom: '10px'}}>
         <div className="card" style={{width: '18rem'}}>
@@ -20,7 +41,11 @@ class RepoCategory extends Component {
             <h5 className="card-title">{this.props.categoryName}</h5>
             <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           </div>
-          <Repository />
+          <div>
+            <ul className="list-group list-group-flush">
+              {this.getRepos()}
+            </ul>
+          </div>
           <div className="card-body">
             <a href="#" className="card-link">Card link</a>
             <a href="#" className="card-link">Another link</a>
