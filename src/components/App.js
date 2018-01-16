@@ -36,7 +36,7 @@ class App extends Component {
 
     var cards = this.state.cards
     //check if the array of categories contain the new category entered by the user
-    var filteredArray = cards.filter(e => e.category == card.category.toLowerCase())
+    var filteredArray = cards.filter(e => e.category === card.category.toLowerCase())
     var doesCategoryExist = filteredArray.length ? true : false
     if (!doesCategoryExist) {
       cards.push(card);
@@ -45,7 +45,7 @@ class App extends Component {
     else {
       console.log("category exists, updating repo array");
       for (var i = 0; i < cards.length; i++) {
-        if (cards[i].category == card.category.toLowerCase()) {
+        if (cards[i].category === card.category.toLowerCase()) {
             var repos = cards[i].repos;
             repos.push(card.repos[0])
             cards[i].repos = repos;
