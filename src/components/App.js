@@ -39,6 +39,7 @@ class App extends Component {
     var filteredArray = cards.filter(e => e.category == card.category.toLowerCase())
     var doesCategoryExist = filteredArray.length ? true : false
     if (!doesCategoryExist) {
+      cards.push(card);
       console.log("creating a new category");
     }
     else {
@@ -46,13 +47,14 @@ class App extends Component {
       for (var i = 0; i < cards.length; i++) {
         if (cards[i].category == card.category.toLowerCase()) {
             var repos = cards[i].repos;
-            repos.push(card.repo)
+            repos.push(card.repos[0])
             cards[i].repos = repos;
         }
       }
     }
 
     this.setState({cards: cards})
+    // debugger;
     console.log(cards);
   }
 
