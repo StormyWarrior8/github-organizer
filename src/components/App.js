@@ -51,8 +51,9 @@ class App extends Component {
         }
       }
     }
-    
+
     this.setState({cards: cards})
+    console.log(cards);
   }
 
 

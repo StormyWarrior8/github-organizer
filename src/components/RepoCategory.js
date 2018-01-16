@@ -12,6 +12,13 @@ class Repository extends Component {
 
 class RepoCategory extends Component {
 
+  renderRepository(repos) {
+    return repos.map((repo, index) =>
+      <Repository key={index} name={repo}/>
+    )
+  }
+
+
   render() {
     const {repos, category, description} = this.props;
     return (
@@ -24,8 +31,7 @@ class RepoCategory extends Component {
           </div>
           <div>
             <ul className="list-group list-group-flush">
-              {<Repository name={repos[0]}/>}
-              {<Repository name={repos[1]}/>}
+              {this.renderRepository(repos)}
             </ul>
           </div>
           <div className="card-body">

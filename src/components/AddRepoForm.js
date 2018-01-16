@@ -7,7 +7,7 @@ class AddRepoForm extends Component {
     super(props)
     this.state = {
       category: '',
-      repo: '',
+      repo: [],
       description: ''
     }
     this.handleRepoNameOnChange = this.handleRepoNameOnChange.bind(this)
