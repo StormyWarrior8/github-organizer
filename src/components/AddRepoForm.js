@@ -7,7 +7,8 @@ class AddRepoForm extends Component {
     super(props)
     this.state = {
       category: '',
-      repo: ''
+      repo: '',
+      description: ''
     }
     this.handleRepoNameOnChange = this.handleRepoNameOnChange.bind(this)
     this.handleCategoryOnChange = this.handleCategoryOnChange.bind(this)
@@ -17,8 +18,9 @@ class AddRepoForm extends Component {
     e.preventDefault();
 
     var card = {
-      repos: this.state.repo,
-      category: this.state.category
+      repo: this.state.repo,
+      category: this.state.category,
+      description: ''
     }
     this.props.onSubmit(card)
   }

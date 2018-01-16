@@ -10,16 +10,18 @@ class App extends Component {
     this.state = {
       cards: [
         {
-          repos: 'repo1',
-          category: 'swift'
+          repos: [
+            'repo1', 'repo2'
+          ],
+          category: 'swift',
+          description: 'Here you find all the swift libraries...'
         },
         {
-          repos: 'repo2',
-          category: 'react'
-        },
-        {
-          repos: 'repo3',
-          category: 'react'
+          repos: [
+            'repo11', 'repo22'
+          ],
+          category: 'react',
+          description: 'Here you find all the react libraries...'
         }
       ]
     }
@@ -31,18 +33,26 @@ class App extends Component {
     return self.indexOf(value) === index;
   }
   addCard(card) {
-    this.setState(prev=>({
-      cards: prev.cards.concat(card)
-    }))
 
-    // //check if the array of categories contain the new category entered by the user
-    // //var filteredArray = this.state.cards.filter(onlyUnique)
-    //
-    // var categories = this.state.cards.map(e => e.category);
-    // var uniqueCategories = categories.filter((value, index, self) => self.indexOf(value) === index)
-    //
-    // console.log(uniqueCategories);
-
+    var cards = this.state.cards
+    //check if the array of categories contain the new category entered by the user
+    var filteredArray = cards.filter(e => e.category == card.category.toLowerCase())
+    var doesCategoryExist = filteredArray.length ? true : false
+    if (!doesCategoryExist) {
+      console.log("creating a new category");
+    }
+    else {
+      console.log("category exists, updating repo array");
+      for (var i = 0; i < cards.length; i++) {
+        if (cards[i].category == card.category.toLowerCase()) {
+            var repos = cards[i].repos;
+            repos.push(card.repo)
+            cards[i].repos = repos;
+        }
+      }
+    }
+    
+    this.setState({cards: cards})
   }
 
 
