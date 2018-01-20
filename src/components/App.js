@@ -9,20 +9,14 @@ class App extends Component {
     super(props);
     this.state = {
       cards: [
-        {
-          repos: [
-            'repo1', 'repo2'
-          ],
-          category: 'swift',
-          description: 'Here you find all the swift libraries...'
-        },
-        {
-          repos: [
-            'repo11', 'repo22'
-          ],
-          category: 'react',
-          description: 'Here you find all the react libraries...'
-        }
+        // {
+        //   repos: [
+        //
+        //   ],
+        //   category: '',
+        //   description: ''
+        // }
+
       ]
     }
     this.addCard = this.addCard.bind(this)

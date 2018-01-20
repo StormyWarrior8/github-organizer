@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 
+
 const allStarredRepos = [];
 
 class AddRepoForm extends Component {
@@ -20,12 +21,24 @@ class AddRepoForm extends Component {
   handleOnSubmit(e) {
     e.preventDefault();
 
+
+
+
+    var filtered = allStarredRepos.filter(e=>{
+      return e.full_name === this.state.repo
+    })[0]
+
+    console.log(filtered);
+
     var card = {
-      repos: [this.state.repo],
+      repos: [filtered],
       category: this.state.category,
       description: ''
     }
     this.props.onSubmit(card)
+
+    console.log(card);
+    this.refs.repoName.value = ""
   }
   handleRepoNameOnChange(e) {
     var repo = e.target.value;
@@ -38,8 +51,24 @@ class AddRepoForm extends Component {
   getAllStarredRepos() {
     axios.get('https://api.github.com/users/tebinraouf/starred')
          .then((response)=>{
-           response.data.map(e => allStarredRepos.push(e.name))
+           response.data.map(e => allStarredRepos.push(e))
          })
+  }
+
+  componentDidMount() {
+    // var filtered = allStarredRepos.filter(e=>{
+    //   return e.full_name == "apple/swift"
+    // })
+
+
+
+
+
+    // console.log(allStarredRepos);
+    // var result = allStarredRepos.filter((e)=>(
+    //   e.full_name === "apple/swift" ? e : null
+    // ))
+    // console.log(filtered);
   }
 
   render() {
@@ -48,11 +77,11 @@ class AddRepoForm extends Component {
         <form onSubmit={this.handleOnSubmit} style={{marginBottom: '10px'}}>
           <div className="form-row">
             <div className="col-2">
-              <input list="repoList" type="text" className="form-control" placeholder="repository name" onChange={this.handleRepoNameOnChange}/>
+              <input list="repoList" type="text" className="form-control" placeholder="repository name" onChange={this.handleRepoNameOnChange} ref="repoName"/>
               <datalist id="repoList">
                 {
                   allStarredRepos.map((e,i) =>
-                    <option key={i} value={e} />
+                    <option key={i} value={e.full_name} />
                   )
                 }
               </datalist>

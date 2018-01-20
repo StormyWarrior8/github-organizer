@@ -3,8 +3,9 @@ import React, { Component } from 'react'
 
 class Repository extends Component {
   render() {
+    const {repo} = this.props
     return (
-      <li className="list-group-item">{this.props.name}</li>
+      <li className="list-group-item"><a href={"https://github.com/" + repo.full_name}>{repo.full_name}</a></li>
     )
   }
 }
@@ -14,7 +15,7 @@ class RepoCategory extends Component {
 
   renderRepository(repos) {
     return repos.map((repo, index) =>
-      <Repository key={index} name={repo}/>
+      <Repository key={index} repo={repo}/>
     )
   }
 
