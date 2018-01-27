@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 
 
-const allStarredRepos = [];
+let allStarredRepos = [];
 
 class AddRepoForm extends Component {
 
@@ -21,14 +21,14 @@ class AddRepoForm extends Component {
   handleOnSubmit(e) {
     e.preventDefault();
 
-
-
-
     var filtered = allStarredRepos.filter(e=>{
       return e.full_name === this.state.repo
     })[0]
 
-    console.log(filtered);
+    allStarredRepos = allStarredRepos.filter(e=>{
+      return e != filtered
+    });
+
 
     var card = {
       repos: [filtered],
@@ -37,8 +37,9 @@ class AddRepoForm extends Component {
     }
     this.props.onSubmit(card)
 
-    console.log(card);
     this.refs.repoName.value = ""
+
+
   }
   handleRepoNameOnChange(e) {
     var repo = e.target.value;
